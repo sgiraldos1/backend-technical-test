@@ -35,8 +35,8 @@ class PropertyHandler(BaseHTTPRequestHandler):
           
             # Call the function to get the properties
             properties = get_properties(construction_year, city, status)
-            response_data = [property.__dict__ for property in properties]
-            self.wfile.write(json.dumps(response_data).encode())
+            self.wfile.write(json.dumps(properties).encode())
+        
         else:
             self.send_response(404)
             self.end_headers()
