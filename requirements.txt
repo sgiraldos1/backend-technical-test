@@ -1,2 +1,1 @@
 mysql-connector
-gunicorn==20.1.0
