@@ -10,7 +10,7 @@ def get_properties(year, city, status):
     # SQL query using filters
     query = """
         SELECT  
-            p.id,
+            DISTINCT(p.id) as id,
             p.address,
             p.city,
             p.price,
@@ -30,7 +30,7 @@ def get_properties(year, city, status):
     if status: 
         query = query + "AND s.name  = %(status)s"
     if city:
-        query = query + "AND p.city  = %(city)s"    
+        query = query + "AND LOWER(p.city) = %(city)s"    
     if year:
         query = query + "AND p.year  = %(year)s"
 
