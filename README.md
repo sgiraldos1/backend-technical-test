@@ -7,7 +7,8 @@ Este proyecto implementa dos microservicios para la plataforma Habi, que permite
 
 - Python 3
 - Bibliotecas de Python: `http.server`, `json`, `unittest`, `mock`
-- Base de datos PostgreSQL
+- Base de datos mySQL
+
 
 ## Descripción del Proyecto
 
@@ -17,17 +18,21 @@ Habi desea proporcionar una herramienta donde los usuarios puedan consultar prop
 
 ### Microservicio de Consulta
 
-- Los usuarios pueden consultar propiedades con los estados: "pre_venta", "en_venta" y "vendido".
+- Los usuarios pueden consultar propiedades con los estados: "pre_venta", "en_venta" y "vendido", mas no pueden ver los estados comprado y comprando.
 - Los usuarios pueden filtrar propiedades por año de construcción, ciudad y estado.
 - Los usuarios pueden aplicar múltiples filtros en la misma consulta.
 - Los usuarios pueden ver la dirección, ciudad, estado, precio de venta y descripción de las propiedades.
 
+
 ### Microservicio de "Me Gusta"
+
+Este microservicio es conceptual
 
 - Los usuarios pueden dar "Me gusta" a una propiedad específica.
 - Los "Me gusta" son de usuarios registrados y se registran en la base de datos.
 
 ## Estructura del Proyecto
+
 
 - `src/`: Directorio principal que contiene el código fuente del proyecto.
     - `controllers/`: Controladores para manejar solicitudes HTTP.
