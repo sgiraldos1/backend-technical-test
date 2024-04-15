@@ -8,7 +8,9 @@ class TestGetProperties(unittest.TestCase):
     @patch("src.services.consulting_service.db_connection")
 
     def test_get_properties_with_filters(self,mock_conn):
+
         # Simulating a connection to the database and a cursor
+        
         mock_cursor= Mock()
         mock_conn.return_value.cursor.return_value = mock_cursor
 
