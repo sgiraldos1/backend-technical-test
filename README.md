@@ -6,7 +6,7 @@ Este proyecto implementa dos microservicios para la plataforma Habi, que permite
 ## Tecnologías Utilizadas
 
 - Python 3
-- Bibliotecas de Python: `http.server`, `json`, `unittest`, `mock`
+- Bibliotecas de Python: `http.server`, `json`, `unittest`, `mock`,`docker`,`postman`
 - Base de datos mySQL
 
 
@@ -33,32 +33,110 @@ Este microservicio es conceptual
 
 ## Estructura del Proyecto
 
+<p>Estructura del proyecto, mostrando los archivos y carpetas principales:</p>
 
 - `src/`: Directorio principal que contiene el código fuente del proyecto.
     - `controllers/`: Controladores para manejar solicitudes HTTP.
-    - `services/`: Servicios para la lógica de negocio.
+    - `services/`: Servicios de consulta de inmuebles.
     - `config/`: Configuración del proyecto, incluyendo la conexión a la base de datos.
 - `tests/`: Directorio que contiene pruebas unitarias para el código.
-- `README.md`: Este archivo.
+- `assets/`: carpeta que contiene el diagrama ENTIDAD-RELACION del servicio de me gusta 
+- `scripts/`: carpeta que contiene el codigo sql para extender el modelo generado a partir del diagrama ENTIDAD-RELACION
+- `README.md`: Este archivo contiene la documentacion y pasos de ejecucion del proyecto.
 
-## Ejecución de las Pruebas Unitarias
 
-Para ejecutar las pruebas unitarias, asegúrate de tener Python 3 instalado y las dependencias necesarias. Luego, puedes ejecutar el siguiente comando en la terminal:
+<pre>
+BACKEND-TECHNICAL-TEST
+├── Dockerfile
+├── README.md
+├── assets
+│   └── like service.png
+├── main.py
+├── requirements.txt
+├── scripts
+│   └── database.sql
+├── src
+│   ├── __init__.py
+│   ├── config
+│   │   ├── __init__.py
+│   │   └── database.py
+│   ├── controllers
+│   │   ├── __init__.py
+│   │   └── property_controller.py
+│   ├── server.py
+│   └── services
+│       ├── __init__.py
+│       └── consulting_service.py
+├── test_main.py
+└── tests
+    ├── __init__.py
+    └── services
+        ├── __init__.py
+        └── test_consulting_service.py
+</pre>
 
-python -m unittest discover
+## Desarrollo
 
-csharp
-Copy code
+Se aborda el desarrollo de la prueba tecnica creando un endpoint de tipo GET el cual permite la obtencion de datos como un producto o lista de productos usando la libreria de python http.server,Luego se procede a ejecutarse en un servidor web para proseguir con la conexion a la base de datos en el adminitrador de bases de datos Mysql, como resultado, se obtiene la generacion de inmuebles con el uso de postman para el ingreso de las variables de estado, ciudad y año del inmueble.
 
-Esto buscará automáticamente todos los archivos de pruebas en el proyecto y los ejecutará, mostrando los resultados en la terminal.
+Se agrega el diagrama de ENTIDAD-RELACION para el servicio de me gusta en los inmuebles y su codigo correspondiente.
+
+
+### Pasos para la ejecucion
+
+1. Se ejecuta el servidor con el siguiente comando 
+
+```python
+python3 main.py
+```
+
+2. se ingresa a postman y se ingresan las variables de city, year y status proseguido del boton send 
+
+3. Para ver la ejecucion del codigo sin necesidad de postman, se usa  curl, un manejador de peticion de http, se usa el siguiente link
+
+
+curl http://localhost:8000/properties?status=en_venta&construction_year=2011&city=medellin
+
 
 ## Diagrama de Entidad-Relación (ER)
 
-![Diagrama ER](diagrama_er.png)
+Se crea el diagrama de ENTIDAD-RELACION del servicio de me gusta donde se muestra la estructura de la base de datos extendida para soportar la funcionalidad de "Me Gusta" en el servicio correspondiente.
 
-El diagrama muestra la estructura de la base de datos extendida para soportar la funcionalidad de "Me Gusta" en el servicio correspondiente.
+se puede ver tanto en el codigo de sql cargado en la carpeta scripts, como en forma de diagrama cargado en la carpeta assets. 
+
+se creo de esta forma basado en la logica de que un inmueble puede tener 1 o mas likes dados y un usuario tiene la potestad de dar 1 o mas likes.
+
+
+## Ejecución de las Pruebas Unitarias
+
+las pruebas unitarias se encuentran contenidas en la carpeta tests- services y el script test-consulting_service.py.
+
+Para ejecutar las pruebas  Se ejecuta el siguiente comando en la raiz del proyecto
+
+```python
+python3 -m unittest tests/*/.py --verbose
+```
+
+se desarrollaron estas pruebas usando mock como representacion de un objeto que permite simular el comportamiento de una clase o funciones dentro de un modulo de python, se usa el framework unittest para realizar la prueba automatizada.
+
+## Extra 
+
+Se dockeriza el sistema usando el archivo dockerfile.Para ejecutarlo se realiza con los siguientes comandos:
+
+1. 
+```bash
+docker build -T properties_test .
+``` 
+2. 
+```bash
+docker run -p 8000:8000 properties_test
+```
+
+como un ejemplo de este luego de ejecutarlo, puedes dirigirte  al siguiente enlace:
+
+http://localhost:8000/properties?status=en_venta
 
 ## Autor
 
-- Nombre: [Tu Nombre]
-- Correo Electrónico: [tu.email@example.com]
+- Nombre: [Sofia Giraldo Sanchez]
+- Correo Electrónico: [sgiraldos1@eafit.edu.co]
