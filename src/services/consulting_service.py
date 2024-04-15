@@ -19,11 +19,16 @@ def get_properties(year, city, status):
             s.name As status
         FROM habi_db.status_history AS sh 
         INNER JOIN habi_db.property AS p ON p.id = sh.property_id
-        INNER JOIN habi_db.status AS s On d.id = sh.status_id
-        WHERE s.name  = %(status)s
-        AND p.city = %(city)s
-        AND p.year = %(year)s;
+        INNER JOIN habi_db.status AS s ON s.id = sh.status_id
+        WHERE s.name  IN ('pre_venta', 'en_venta','vendido') 
     """
+    if status: 
+        query = query + "AND s.name  = %(status)s"
+    if city:
+        query = query + "AND p.city  = %(city)s"    
+    if year:
+        query = query + "AND p.year  = %(year)s"
+
 
     filters = {"status": status, "city": city, "year": year}
     cursor.execute(query, filters)

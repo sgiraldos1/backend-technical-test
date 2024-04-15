@@ -18,17 +18,20 @@ class PropertyHandler(BaseHTTPRequestHandler):
                     int(param.split("=")[1])
                     for param in query_params
                     if param.startswith("construction_year")
-                ][0]
+                ] 
+                construction_year= construction_year[0] if construction_year else None
                 city = [
                     param.split("=")[1]
                     for param in query_params
                     if param.startswith("city")
-                ][0]
+                ]
+                city= city[0] if city else None
                 status = [
                     param.split("=")[1]
                     for param in query_params
                     if param.startswith("status")
-                ][0]
+                ]
+                status= status[0] if status else None
                 
             else:
              construction_year,city,status =None, None, None
