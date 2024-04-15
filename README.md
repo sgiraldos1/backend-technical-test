@@ -43,6 +43,7 @@ Este microservicio es conceptual
 - `assets/`: carpeta que contiene el diagrama ENTIDAD-RELACION del servicio de me gusta 
 - `scripts/`: carpeta que contiene el codigo sql para extender el modelo generado a partir del diagrama ENTIDAD-RELACION
 - `README.md`: Este archivo contiene la documentacion y pasos de ejecucion del proyecto.
+-`requirements`: Archivo de requerimientos para instalar las dependencias
 
 
 <pre>
@@ -84,9 +85,16 @@ Se agrega el diagrama de ENTIDAD-RELACION para el servicio de me gusta en los in
 
 ### Pasos para la ejecucion
 
-1. Se ejecuta el servidor con el siguiente comando 
+1. Se instalan los requerimientos con el archivo de requirement.txt
 
-```python
+```bash
+pip install --upgrade -r requirements.txt
+```
+
+
+2. Se ejecuta el servidor con el siguiente comando 
+
+```bash
 python3 main.py
 ```
 
@@ -118,7 +126,7 @@ las pruebas unitarias se encuentran contenidas en la carpeta tests- services y e
 
 Para ejecutar las pruebas  Se ejecuta el siguiente comando en la raiz del proyecto
 
-```python
+```bash
 python3 -m unittest tests/**/*.py --verbose
 ```
 
