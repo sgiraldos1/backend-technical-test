@@ -92,6 +92,9 @@ python3 main.py
 
 2. se ingresa a postman y se ingresan las variables de city, year y status proseguido del boton send 
 
+![postman](https://raw.githubusercontent.com/sgiraldos1/backend-technical-test/main/assets/postman.jpeg)
+
+
 3. Para ver la ejecucion del codigo sin necesidad de postman, se usa  curl, un manejador de peticion de http, se usa el siguiente link
 
 
@@ -105,6 +108,8 @@ Se crea el diagrama de ENTIDAD-RELACION del servicio de me gusta donde se muestr
 se puede ver tanto en el codigo de sql cargado en la carpeta scripts, como en forma de diagrama cargado en la carpeta assets. 
 
 se creo de esta forma basado en la logica de que un inmueble puede tener 1 o mas likes dados y un usuario tiene la potestad de dar 1 o mas likes.
+
+![likes_service](https://raw.githubusercontent.com/sgiraldos1/backend-technical-test/main/assets/like_service.png)
 
 
 ## Ejecución de las Pruebas Unitarias
