@@ -17,10 +17,15 @@ def get_properties(year, city, status):
             p.year,
             p.description,
             s.name As status
-        FROM habi_db.status_history AS sh 
+        FROM habi_db.status_history AS sh
+        INNER JOIN (
+            SELECT property_id, MAX(update_date) AS update_date
+            FROM habi_db.status_history
+            GROUP BY property_id
+        ) AS latest_sh ON latest_sh.property_id = sh.property_id AND latest_sh.update_date = sh.update_date
         INNER JOIN habi_db.property AS p ON p.id = sh.property_id
         INNER JOIN habi_db.status AS s ON s.id = sh.status_id
-        WHERE s.name  IN ('pre_venta', 'en_venta','vendido') 
+        WHERE s.name  IN ('pre_venta', 'en_venta','vendido')
     """
     if status: 
         query = query + "AND s.name  = %(status)s"
