@@ -119,10 +119,12 @@ las pruebas unitarias se encuentran contenidas en la carpeta tests- services y e
 Para ejecutar las pruebas  Se ejecuta el siguiente comando en la raiz del proyecto
 
 ```python
-python3 -m unittest tests/*/.py --verbose
+python3 -m unittest tests/**/*.py --verbose
 ```
 
 se desarrollaron estas pruebas usando mock como representacion de un objeto que permite simular el comportamiento de una clase o funciones dentro de un modulo de python, se usa el framework unittest para realizar la prueba automatizada.
+
+![pruebas_unitarias](https://raw.githubusercontent.com/sgiraldos1/backend-technical-test/main/assets/pruebas_unitarias.jpeg)
 
 ## Extra 
 
